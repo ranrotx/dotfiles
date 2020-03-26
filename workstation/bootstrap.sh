@@ -59,7 +59,7 @@ rm -rf /var/lib/apt/lists/*
 
 # install 1password
 if ! [ -x "$(command -v op)" ]; then
-  export OP_VERSION="v0.5.6-003"
+  export OP_VERSION="v0.9.4"
   curl -sS -o 1password.zip https://cache.agilebits.com/dist/1P/op/pkg/${OP_VERSION}/op_linux_amd64_${OP_VERSION}.zip
   unzip 1password.zip op -d /usr/local/bin
   rm -f 1password.zip
@@ -67,13 +67,14 @@ fi
 
 # install kubectl
 if ! [ -x "$(command -v kubectl)" ]; then
-  curl -L -o /usr/local/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+  export KUBE_VERSION="1.15.0/2020-02-22"
+  curl -sS -o /usr/local/bin/kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/${KUBE_VERSION}/bin/linux/amd64/kubectl
   chmod 755 /usr/local/bin/kubectl
 fi
 
 # install terraform
 if ! [ -x "$(command -v terraform)" ]; then
-  export TERRAFORM_VERSION="0.12.9"
+  export TERRAFORM_VERSION="0.12.24"
   wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip 
   unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip 
   chmod +x terraform
@@ -136,16 +137,16 @@ echo "==> Setting shell to zsh..."
 chsh -s /usr/bin/zsh
 
 echo "==> Creating dev directories"
-mkdir -p /root/code
+mkdir -p /root/workspace
 
-if [ ! -d /root/code/dotfiles ]; then
+if [ ! -d /root/workspace/dotfiles ]; then
   echo "==> Setting up dotfiles"
   # the reason we dont't copy the files individually is, to easily push changes
   # if needed
-  cd "/root/code"
+  cd "/root/workspace"
   git clone --recursive https://github.com/ranrotx/dotfiles.git
 
-  cd "/root/code/dotfiles"
+  cd "/root/workspace/dotfiles"
   git remote set-url origin git@github.com:ranrotx/dotfiles.git
 
   ln -sfn $(pwd)/vimrc "${HOME}/.vimrc"
@@ -189,8 +190,8 @@ EOF
 fi
 
 
-# Set correct timezone
-#timedatectl set-timezone Europe/Istanbul
+Set correct timezone
+timedatectl set-timezone America/Chicago
 
 echo ""
 echo "==> Done!"

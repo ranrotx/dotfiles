@@ -25,6 +25,14 @@ resource "aws_instance" "ipad-workstation" {
   subnet_id = "subnet-0e1cbda975e2b4ad4"
   vpc_security_group_ids = ["sg-018a1eb442ff4b774"]
   associate_public_ip_address = "true"
+  user_data = <<EOF
+    #!/bin/bash
+
+    curl https://raw.githubusercontent.com/ranrotx/dotfiles/master/workstation/bootstrap.sh | \
+      bash -s initialize | \
+      tee /root/bootstrap.logs
+
+  EOF
 
   tags = {
     Name = "ipad-workstation"
