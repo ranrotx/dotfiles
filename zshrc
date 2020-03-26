@@ -11,8 +11,6 @@
 # =============
 alias ..='cd ..'
 
-alias t="tig status"
-alias tigs="tig status" #old habits don't die
 alias d='git diff' 
 alias vi='vim'
 
@@ -28,24 +26,6 @@ case `uname` in
   ;;
 esac
 
-alias sq='git rebase -i $(git merge-base $(git rev-parse --abbrev-ref HEAD) master)'
-alias co='git checkout master'
-alias po='git pull origin $(git rev-parse --abbrev-ref HEAD)'
-alias b='git branch'
-alias hc='hub compare'
-alias hp='hub pull-request'
-
-
-# open github repo from git repo
-function hb() {
-  # from https://jasonmccreary.me/articles/open-github-command-line/
-  github_url=`git remote -v | awk '/fetch/{print $2}' | sed -Ee 's#(git@|git://)#https://#' -e 's@com:@com/@' -e 's%\.git$%%' | awk '/github/'`;
-  open $github_url
-}
-
-alias -s go='go run'
-alias hs='hugo server'
-
 alias icloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/'
 
 
@@ -57,7 +37,7 @@ export LANG="en_US.UTF-8"
 # =============
 #
 
-export PATH="/usr/local/go/bin:$GOBIN:$HOME/.cargo/bin:$PATH"
+export PATH="/usr/local/opt/curl/bin:/usr/local/opt/openssl/bin:$PATH"
 
 export EDITOR="vim"
 export LSCOLORS=cxBxhxDxfxhxhxhxhxcxcx
@@ -186,40 +166,7 @@ zstyle ':completion:*' list-dirs-first true
 # ===================
 #    KEY BINDINGS
 # ===================
-# Use emacs-like key bindings by default:
-bindkey -e
 
-# [Ctrl-r] - Search backward incrementally for a specified string. The string
-# may begin with ^ to anchor the search to the beginning of the line.
-bindkey '^r' history-incremental-search-backward      
-
-if [[ "${terminfo[kpp]}" != "" ]]; then
-  bindkey "${terminfo[kpp]}" up-line-or-history       # [PageUp] - Up a line of history
-fi
-
-if [[ "${terminfo[knp]}" != "" ]]; then
-  bindkey "${terminfo[knp]}" down-line-or-history     # [PageDown] - Down a line of history
-fi
-
-if [[ "${terminfo[khome]}" != "" ]]; then
-  bindkey "${terminfo[khome]}" beginning-of-line      # [Home] - Go to beginning of line
-fi
-
-if [[ "${terminfo[kend]}" != "" ]]; then
-  bindkey "${terminfo[kend]}"  end-of-line            # [End] - Go to end of line
-fi
-if [[ "${terminfo[kcbt]}" != "" ]]; then
-  bindkey "${terminfo[kcbt]}" reverse-menu-complete   # [Shift-Tab] - move through the completion menu backwards
-fi
-
-bindkey '^?' backward-delete-char                     # [Backspace] - delete backward
-if [[ "${terminfo[kdch1]}" != "" ]]; then
-  bindkey "${terminfo[kdch1]}" delete-char            # [Delete] - delete forward
-else
-  bindkey "^[[3~" delete-char
-  bindkey "^[3;5~" delete-char
-  bindkey "\e[3~" delete-char
-fi
 
 # ===================
 #    MISC SETTINGS
@@ -246,48 +193,14 @@ exit() {
   fi
 }
 
-function switchgo() {
-  version=$1
-  if [ -z $version ]; then
-    echo "Usage: switchgo [version]"
-    return
-  fi
-
-  if ! command -v "go$version" > /dev/null 2>&1; then
-    echo "version does not exist, downloading with commands: "
-    echo "  go get golang.org/dl/go${version}"
-    echo "  go${version} download"
-    echo ""
-
-    go get "golang.org/dl/go${version}"
-    go${version} download
-  fi
-
-  go_bin_path=$(command -v "go$version")
-  ln -sf "$go_bin_path" "$GOBIN/go"
-  echo "Switched to ${go_bin_path}"
-}
 
 # ===================
 #    PLUGINS
 # ===================
 
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # ===================
 #    THIRD PARTY
 # ===================
-# brew install jump
-# https://github.com/gsamokovarov/jump
-eval "$(jump shell)"
-
-# brew install rbenv
-eval "$(rbenv init -)"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/fatih/Code/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/fatih/Code/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/fatih/Code/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/fatih/Code/google-cloud-sdk/completion.zsh.inc'; fi
-export PATH="/usr/local/opt/mysql-client/bin:$PATH"

@@ -6,17 +6,16 @@ setup and ready to use mosh setup.
 ## Install
 
 
-1. Create workstation droplet
+1. Create workstation instance (requires AWS credentials alredy set)
 
 ```
-$ export DIGITALOCEAN_TOKEN="Put Your Token Here" 
 $ terraform plan
 $ terraform apply -auto-approve
 ```
 2. SSH via mosh:
 
 ```
-$ mosh --no-init --ssh="ssh -o StrictHostKeyChecking=no -i ~/.ssh/github_rsa -p 22" root@<DROPLET_IP> -- tmux new-session -ADs main
+$ mosh --no-init --ssh="ssh -o StrictHostKeyChecking=no -i ~/.ssh/github_rsa -p 22" root@<Instance_IP> -- tmux new-session -ADs main
 $ cd /mnt/dev/secrets && ./pull-secrets.sh
 ```
 
