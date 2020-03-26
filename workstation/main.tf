@@ -30,7 +30,7 @@ resource "aws_instance" "ipad-workstation" {
 
     curl https://raw.githubusercontent.com/ranrotx/dotfiles/master/workstation/bootstrap.sh | \
       bash -s initialize | \
-      tee /root/bootstrap.logs
+      tee /root/bootstrap.log
 
   EOF
 
