@@ -11,7 +11,7 @@
 # =============
 alias ..='cd ..'
 
-alias d='git diff' 
+alias d='git diff'
 alias vi='vim'
 
 case `uname` in
@@ -22,7 +22,7 @@ case `uname` in
   ;;
   Linux)
     alias ll='ls -al'
-    alias ls='ls --color=auto' 
+    alias ls='ls --color=auto'
   ;;
 esac
 
@@ -66,12 +66,12 @@ setopt append_history
 setopt extended_history
 setopt hist_expire_dups_first
 # ignore duplication command history list
-setopt hist_ignore_dups 
+setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_verify
 setopt inc_append_history
 # share command history data
-setopt share_history 
+setopt share_history
 
 # =============
 #    PROMPT
@@ -176,7 +176,7 @@ zstyle ':completion:*' list-dirs-first true
 typeset -U path PATH cdpath CDPATH fpath FPATH manpath MANPATH
 
 # only exit if we're not on the last pane
-	
+
 exit() {
   if [[ -z $TMUX ]]; then
     builtin exit
@@ -184,7 +184,7 @@ exit() {
   fi
 
   panes=$(tmux list-panes | wc -l)
-  wins=$(tmux list-windows | wc -l) 
+  wins=$(tmux list-windows | wc -l)
   count=$(($panes + $wins - 1))
   if [ $count -eq 1 ]; then
     tmux detach
@@ -198,8 +198,8 @@ exit() {
 #    PLUGINS
 # ===================
 
-# source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # ===================
 #    THIRD PARTY

@@ -1,5 +1,15 @@
 all: sync
 
+init:
+
+	# Create .zsh dirctory if doesn't exist
+	[ -f ~/.zsh ] || mkdir -p ~/.zsh
+
+	# Install plugins if they don't exist
+	[ -f ~/.zsh/zsh-syntax-highlighting ] || git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
+	[ -f ~/.zsh/zsh-autosuggestions ] || git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+
+
 sync:
 
 	[ -f ~/.vimrc ] || ln -s $(PWD)/vimrc ~/.vimrc

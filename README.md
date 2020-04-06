@@ -12,6 +12,9 @@ My personal dotfiles
 # install all brew dependencies (Mac only)
 brew bundle
 
+# If installing for the first time (not on iPad instance)
+make init
+
 # copy dotfiles to the appropriate places
 make
 ```
