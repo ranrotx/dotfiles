@@ -3,12 +3,20 @@ all: sync
 init:
 
 	# Create .zsh dirctory if doesn't exist
-	[ -f ~/.zsh ] || mkdir -p ~/.zsh
+	[ -d ~/.zsh ] || mkdir -p ~/.zsh
 
-	# Install plugins if they don't exist
-	[ -f ~/.zsh/zsh-syntax-highlighting ] || git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
-	[ -f ~/.zsh/zsh-autosuggestions ] || git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+	# Install ZSH plugins if they don't exist
+	[ -d ~/.zsh/zsh-syntax-highlighting ] || git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
+	[ -d ~/.zsh/zsh-autosuggestions ] || git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
+	# Create tmux plugin directory if it doesn't exist
+	[ -d ~/.tmux/plugins ] || mkdir -p ~/.tmux/plugins
+
+	# Install Tmux plugins if they don't exist
+	[ -d ~/.tmux/plugins/tpm ] || git clone https://github.com/tmux-plugins/tpm "${HOME}/.tmux/plugins/tpm"
+	[ -d ~/.tmux/plugins/tmux-open ] || git clone https://github.com/tmux-plugins/tmux-open.git "${HOME}/.tmux/plugins/tmux-open"
+	[ -d ~/.tmux/plugins/tmux-yank ] || git clone https://github.com/tmux-plugins/tmux-yank.git "${HOME}/.tmux/plugins/tmux-yank"
+	[ -d ~/.tmux/plugins/tmux-prefix-highlight ] || git clone https://github.com/tmux-plugins/tmux-prefix-highlight.git "${HOME}/.tmux/plugins/tmux-prefix-highlight"
 
 sync:
 

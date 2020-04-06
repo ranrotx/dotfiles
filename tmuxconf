@@ -1,10 +1,10 @@
 # INSTALL
 # cp tmuxconf ~/.tmux.conf
 #
-# Set prefix key to c-f instead of default c-b
+# Set prefix key to C-a
 unbind C-b
-set -g prefix C-f
-bind C-f send-prefix
+set-option -g prefix C-a
+bind-key C-a send-prefix
 
 set-option -g default-shell /bin/zsh
 
@@ -111,12 +111,12 @@ bind-key K resize-pane -U 10
 bind-key H resize-pane -L 10
 bind-key L resize-pane -R 10
 
-# Select panes 
+# Select panes
 # NOTE(arslan): See to prevent cycling https://github.com/tmux/tmux/issues/1158
-bind-key j select-pane -D 
-bind-key k select-pane -U 
-bind-key h select-pane -L 
-bind-key l select-pane -R 
+bind-key j select-pane -D
+bind-key k select-pane -U
+bind-key h select-pane -L
+bind-key l select-pane -R
 
 # Disable confirm before killing
 bind-key x kill-pane
@@ -124,7 +124,7 @@ bind-key x kill-pane
 # This tmux statusbar config was created by tmuxline.vim
 # on Wed, 25 Nov 2015
 set -g status "on"
-set -g status-bg "colour236" 
+set -g status-bg "colour236"
 set -g status-justify "left"
 set -g status-position "top"
 set -g status-left-length "100"
@@ -178,7 +178,7 @@ run -b '~/.tmux/plugins/tpm/tpm'
 # such as cmd-j, cmd-left, etc.. , select the option "send hex code" and the
 # enter the hex code which I want to be executed, hence the tmux sequence. So
 # when I press CMD + d in iterm, I send the sequence 0x06 0x76,
-# which tmux inteprets it as opening a new pane. 
+# which tmux inteprets it as opening a new pane.
 ###############################################
 
 ######## Alacritty + Tmux key integration #########
@@ -206,12 +206,12 @@ run -b '~/.tmux/plugins/tpm/tpm'
 #
 # Next step is to add a line to 'key_binding' setting in Alacritty:
 #
-#   - { key: D,        mods: Command,       chars: "\x06\x76"  } 
+#   - { key: D,        mods: Command,       chars: "\x06\x76"  }
 #
 # That's it! The followings are the ones that I'm using:
 #
 #   key_bindings:
-#     - { key: D,        mods: Command,       chars: "\x06\x76" } 
+#     - { key: D,        mods: Command,       chars: "\x06\x76" }
 #     - { key: D,        mods: Command|Shift, chars: "\x06\x73" }
 #     - { key: W,        mods: Command,       chars: "\x06\x78" }
 #     - { key: H,        mods: Command,       chars: "\x06\x68" }
@@ -237,6 +237,6 @@ run -b '~/.tmux/plugins/tpm/tpm'
 # such as cmd-j, cmd-left, etc.. , select the option "send hex code" and the
 # enter the hex code which I want to be executed, hence the tmux sequence. So
 # when I press CMD + d in iterm, I send the sequence 0x06 0x76,
-# which tmux inteprets it as opening a new pane. 
+# which tmux inteprets it as opening a new pane.
 ###############################################
 
