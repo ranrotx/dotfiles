@@ -37,7 +37,7 @@ export LANG="en_US.UTF-8"
 # =============
 #
 
-export PATH="/usr/local/bin:/usr/local/opt/curl/bin:/usr/local/opt/openssl/bin:$PATH"
+export PATH="/usr/local/opt/curl/bin:/usr/local/opt/openssl/bin:/usr/local/bin:$PATH"
 
 export EDITOR="vim"
 export LSCOLORS=cxBxhxDxfxhxhxhxhxcxcx

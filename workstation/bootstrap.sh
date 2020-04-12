@@ -148,7 +148,7 @@ EOF
 fi
 
 
-Set correct timezone
+# Set correct timezone
 timedatectl set-timezone America/Chicago
 
 echo ""
