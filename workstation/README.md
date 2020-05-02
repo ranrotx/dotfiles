@@ -21,5 +21,7 @@ $ cd /mnt/dev/secrets && ./pull-secrets.sh
 
 ## Todo
 
+* Install AWS CLI
 * Encrypt /mnt/secrets
+* Get kubectl configuration/secrets
 * Resync back some dynamic files (such as `.zsh_history`) back to 1password occasionally
