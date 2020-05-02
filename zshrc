@@ -135,6 +135,10 @@ setopt auto_menu         # show completion menu on successive tab press
 setopt complete_in_word
 setopt always_to_end
 
+# Enable autocompletion for AWS cli
+
+complete -C '/usr/local/bin/aws_completer' aws
+
 # autocompletion with an arrow-key driven interface
 zstyle ':completion:*:*:*:*:*' menu select
 
