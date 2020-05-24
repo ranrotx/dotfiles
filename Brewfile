@@ -16,6 +16,7 @@ brew 'gdbm'
 brew 'git'
 brew 'gnu-sed'
 brew 'go'
+brew 'jq'
 brew 'libevent'
 brew 'libgpg-error'
 brew 'libksba'
@@ -34,6 +35,7 @@ brew 'youtube-dl'
 brew 'zsh'
 brew "aws/tap/aws-sam-cli"
 brew "jmespath/jmespath/jp"
+cask "1password"
 cask "alfred"
 cask "amazon-workspaces"
 cask "authy"
