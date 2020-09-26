@@ -5,10 +5,12 @@ tap "homebrew/cask-drivers"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "jmespath/jmespath"
+tap "twilio/brew"
 
 brew 'autoconf'
 brew 'autoenv'
 brew 'automake'
+brew 'awscli'
 brew 'coreutils'
 brew 'ffmpeg'
 brew 'findutils'
@@ -29,6 +31,7 @@ brew 'pkg-config'
 brew 'python3'
 brew 'readline'
 brew 'tmux'
+brew 'twilio'
 brew 'vim'
 brew 'wget'
 brew 'youtube-dl'
